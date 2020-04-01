@@ -5,10 +5,14 @@ import './App.css';
 
 function App() {
   const [cards, SetCards] = useState([])
-  console.log(cards, SetCards)
+
+  const addNewCard = cardInfo => {
+    SetCards([...cards, cardInfo])
+  }
+
   return (
     <div>
-      <InputForm />
+      <InputForm onSubmit={addNewCard}/>
       <CardList cards={cards} />
     </div>
   );
