@@ -1,0 +1,12 @@
+.userCard {
+    margin: 1rem;
+}
+
+.userCard img {
+    width: 70px;
+}
+
+.userName {
+    font-weight: bold;
+}
+
