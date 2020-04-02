@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import CardList from './components/CardList.jsx'
 import InputForm from './components/InputForm.jsx'
+import UserProfile from './components/UserProfile'
 import './App.css';
 
 function App() {
@@ -11,10 +13,13 @@ function App() {
   }
 
   return (
-    <div>
-      <InputForm onSubmit={addNewCard}/>
-      <CardList cards={cards} />
-    </div>
+    <Router>
+      <div>
+        <Route path='/' exact render={() => <InputForm onSubmit={addNewCard} />} />
+        <Route path='/' exact render={() => <CardList cards={cards} />} />
+        <Route path='/user/:username?' component={UserProfile} />
+      </div>
+    </Router>
   );
 }
 

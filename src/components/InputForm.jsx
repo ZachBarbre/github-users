@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import getData from '../utils/getData';
 
 
 const InputForm = (props) => {
@@ -6,11 +7,19 @@ const InputForm = (props) => {
     
     const handleSubmit = async event => {
         event.preventDefault();
-        const response = await fetch(`https://api.github.com/users/${username}`)
-        const data = await response.json();
-        props.onSubmit(data);
+        const userData = await getData(`https://api.github.com/users/${username}`)
+        props.onSubmit(userData);
         setUsername('')
     }
+
+    // useEffect( () => {
+    //     const getUser = async (props) => {
+    //         const userData = await getData(`https://api.github.com/users/zachbarbre`)
+    //         console.log(userData)
+    //         props.onSubmit(userData);
+    //     }
+    //     getUser();
+    // }, [props.onSubmit])
 
     return (
        <div>
@@ -26,8 +35,6 @@ const InputForm = (props) => {
             </form>
        </div>
     )
-}
-
-// 
+}  
 
 export default InputForm;

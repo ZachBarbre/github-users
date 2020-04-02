@@ -8,6 +8,9 @@ const Card = (props) => {
             <img alt='GitHub Avatar' src={props.avatar_url} />
             <div className='userName'>{props.name}</div>
             <a href={`http://${props.blog}`}>{props.blog}</a>
+            <div>
+            <a href={`/user/${props.login}`}>See GitHub Repos</a>
+            </div>
         </div>
     )
 }
